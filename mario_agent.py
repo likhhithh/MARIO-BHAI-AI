@@ -146,16 +146,16 @@ class QLearningAgent:
         stats['q_table_size'] = len(self.q_table)
         
         print("\n" + "="*90)
-        print("🎉 TRAINING COMPLETE!")
+        print(" TRAINING COMPLETE!")
         print("="*90)
-        print(f"📊 Performance (last 100 episodes):")
+        print(f"Performance (last 100 episodes):")
         print(f"   • Win Rate: {final_win_rate:.2%}")
         print(f"   • Avg Score: {int(avg_final_score)}")
         print(f"   • Avg Coins: {avg_final_coins:.1f}/{game.total_coins} ({avg_final_coin_pct:.1f}%)")
         print(f"   • Avg Time: {avg_final_time:.1f}s")
         print(f"   • Perfect Runs: {perfect_runs}")
-        print(f"\n🧠 Q-table size: {len(self.q_table)} states")
-        print(f"🔍 Final epsilon: {self.epsilon:.4f}")
+        print(f"\n Q-table size: {len(self.q_table)} states")
+        print(f" Final epsilon: {self.epsilon:.4f}")
         print("="*90)
         
         return stats
@@ -171,7 +171,7 @@ class QLearningAgent:
         }
         with open(filename, 'w') as f:
             json.dump(data, f, indent=2)
-        print(f"💾 Q-table saved: {filename} ({len(q_dict)} states)")
+        print(f" Q-table saved: {filename} ({len(q_dict)} states)")
     
     def load_q_table(self, filename):
         """Load Q-table from file"""
@@ -190,15 +190,15 @@ class QLearningAgent:
                 self.action_counts[state] = v
         
         self.epsilon = data.get('epsilon', EPSILON_MIN)
-        print(f"📂 Loaded Q-table: {len(self.q_table)} states (epsilon: {self.epsilon:.4f})")
+        print(f" Loaded Q-table: {len(self.q_table)} states (epsilon: {self.epsilon:.4f})")
     
     def print_policy_sample(self, num_states=10):
         """Print sample of learned policy"""
         if len(self.q_table) == 0:
-            print("\n⚠️  No policy learned yet (Q-table is empty)")
+            print("\n  No policy learned yet (Q-table is empty)")
             return
             
-        print(f"\n📋 Top {num_states} Learned Strategies:")
+        print(f"\n Top {num_states} Learned Strategies:")
         print("-" * 100)
         print(f"{'State Description':<60} | {'Best Action':<20} | {'Q-value':<10}")
         print("-" * 100)
